@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['is_connected'])){
     header('Location: login.php?error=notallowed');
     die;
