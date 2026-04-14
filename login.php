@@ -7,8 +7,14 @@
 <body>
     <h1>Connexion</h1>
     <?php
+
     if(isset($_GET['error'])){
-        echo '<p>Failed. Retry.</p>';
+        if($_GET['error'] === 'notallowed'){
+            echo '<p>ahahahaa you didnt say magic word.</p>';
+        }
+        else{
+            echo '<p>Failed. Retry.</p>';
+        }
     }
     ?>
 
