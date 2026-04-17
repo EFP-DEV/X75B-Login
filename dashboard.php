@@ -1,11 +1,18 @@
 <?php
+
+// Start the session (must be called before any output)
 session_start();
 
-if(!isset($_SESSION['is_connected'])){
-    header('Location: login.php?error=notallowed');
-    die;
-}
+// Check if the user is authenticated
+// isset() only checks existence, not value
+if (!isset($_SESSION['is_connected']) || $_SESSION['is_connected'] !== true) {
 
+    // Redirect unauthorized users to login page with error flag
+    header('Location: login.php?error=notallowed');
+
+    // Stop script execution immediately after redirect
+    exit;
+}
 ?>
 
 <!DOCTYPE html>

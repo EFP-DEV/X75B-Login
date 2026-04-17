@@ -6,16 +6,24 @@
 </head>
 <body>
     <h1>Connexion</h1>
-    <?php
-    if(isset($_GET['error'])){
-        if($_GET['error'] === 'notallowed'){
-            echo '<p>ahahahaa you didnt say magic word.</p>';
-        }
-        else{
-            echo '<p>Failed. Retry.</p>';
-        }
+<?php
+
+// Check if an 'error' parameter exists in the URL (?error=...)
+if (isset($_GET['error'])) {
+
+    // Specific case: user is not allowed
+    if ($_GET['error'] === 'notallowed') {
+
+        // Display a custom message for this case
+        echo '<p>ahahahaa you didnt say magic word.</p>';
+
+    } else {
+
+        // Fallback message for any other error value
+        echo '<p>Failed. Retry.</p>';
     }
-    ?>
+}
+?>
 
     <form method="POST" action="connect.php">
         <label for="username">Nom d'utilisateur</label>
@@ -26,5 +34,7 @@
 
         <button type="submit">Se connecter</button>
     </form>
+
+    <a href="register.php">Inscription</a>
 </body>
 </html>

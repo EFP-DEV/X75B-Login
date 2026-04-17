@@ -6,9 +6,9 @@ $stmt = $pdo->prepare('SELECT password FROM user WHERE active=1 AND email=?');
 $stmt->execute([$_POST['username']]);
 $user = $stmt->fetch();
 
-$db_password = $user['password'];          // viendra de la db
+$db_password = $user['password'];
 
-if($user !== false && $db_password === $_POST['password']){
+if($user !== false && password_verify($_POST['password'], $db_password)){
     // aller sur dasbhoard
     session_start();
     $_SESSION['is_connected'] = $_POST['username'];
